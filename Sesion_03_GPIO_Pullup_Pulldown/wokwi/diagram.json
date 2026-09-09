@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "author": "Axel",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": -40,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_car_red",
+      "top": -129.6,
+      "left": 124.25,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_car_red",
+      "top": -138,
+      "left": 359,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_car_yellow",
+      "top": -62.4,
+      "left": 153.05,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_car_yellow",
+      "top": -80.4,
+      "left": 320.6,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_car_green",
+      "top": -4.8,
+      "left": 201.05,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_car_green",
+      "top": -13.2,
+      "left": 359,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_ped_red",
+      "top": 62.4,
+      "left": 277.85,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_ped_red",
+      "top": 159.6,
+      "left": 349.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_ped_green",
+      "top": 100,
+      "left": 220,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_ped_green",
+      "top": 217.2,
+      "left": 301.4,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 276.2,
+      "left": 76.8,
+      "attrs": { "color": "blue" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP15", "r_car_red:1", "red", [] ],
+    [ "r_car_red:2", "led_car_red:A", "red", [ "v-10.8", "h230.4" ] ],
+    [ "led_car_red:C", "pico:GND.8", "black", [ "h-450.8", "v127.95" ] ],
+    [ "pico:GP14", "r_car_yellow:1", "yellow", [] ],
+    [ "r_car_yellow:2", "led_car_yellow:A", "yellow", [ "v-1.2", "h144" ] ],
+    [ "led_car_yellow:C", "pico:GND.8", "black", [ "h-230", "v-19.2", "h-57.6", "v96", "h-16" ] ],
+    [ "pico:GP13", "r_car_green:1", "green", [] ],
+    [ "r_car_green:2", "led_car_green:A", "green", [] ],
+    [ "led_car_green:C", "pico:GND.8", "black", [ "v-19.2", "h-316.4", "v22.35" ] ],
+    [ "pico:GP12", "r_ped_red:1", "red", [] ],
+    [ "r_ped_red:2", "led_ped_red:A", "red", [] ],
+    [ "led_ped_red:C", "pico:GND.8", "black", [ "v48", "h-306.8", "v-192", "h-25.6" ] ],
+    [ "pico:GP11", "r_ped_green:1", "green", [] ],
+    [ "r_ped_green:2", "led_ped_green:A", "green", [] ],
+    [ "led_ped_green:C", "pico:GND.8", "black", [ "h-383.6", "v-201.6", "h99.2" ] ],
+    [ "pico:GP16", "btn1:1.l", "green", [] ],
+    [ "btn1:2.l", "pico:GND.8", "black", [ "h-19.2", "v-226.85" ] ]
+  ],
+  "dependencies": {}
+}
