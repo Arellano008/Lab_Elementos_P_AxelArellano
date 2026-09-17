@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" font-family="Segoe UI, Arial, sans-serif">
+  <!-- Fondo -->
+  <rect x="0" y="0" width="1200" height="1600" fill="#f5f7fa"/>
+
+  <!-- ===================== 1. ENCABEZADO ===================== -->
+  <rect x="0" y="0" width="1200" height="130" fill="#1e3a5f"/>
+  <text x="600" y="55" text-anchor="middle" fill="#ffffff" font-size="30" font-weight="bold">Elementos Programables I</text>
+  <text x="600" y="95" text-anchor="middle" fill="#bcd4ea" font-size="22">Sesión 01: Entorno y Arquitectura</text>
+  <text x="600" y="120" text-anchor="middle" fill="#8fb3d6" font-size="16">Axel Arellano</text>
+
+  <!-- ===================== 2. TRES DISCIPLINAS ===================== -->
+  <text x="60" y="180" fill="#1e3a5f" font-size="22" font-weight="bold">1. Tres disciplinas, una plataforma</text>
+
+  <!-- Programacion -->
+  <circle cx="220" cy="270" r="70" fill="#2e86ab"/>
+  <text x="220" y="265" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Programación</text>
+  <text x="220" y="285" text-anchor="middle" fill="#dceefb" font-size="12">MicroPython / C++</text>
+
+  <!-- Electronica -->
+  <circle cx="600" cy="270" r="70" fill="#3aa655"/>
+  <text x="600" y="265" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Electrónica</text>
+  <text x="600" y="285" text-anchor="middle" fill="#dff5e4" font-size="12">GPIO, LEDs, circuitos</text>
+
+  <!-- Automatizacion -->
+  <circle cx="980" cy="270" r="70" fill="#e08e2b"/>
+  <text x="980" y="265" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Automatización</text>
+  <text x="980" y="285" text-anchor="middle" fill="#fcecd6" font-size="12">Sensores, control</text>
+
+  <line x1="290" y1="270" x2="530" y2="270" stroke="#9aa5b1" stroke-width="3"/>
+  <line x1="670" y1="270" x2="910" y2="270" stroke="#9aa5b1" stroke-width="3"/>
+
+  <rect x="470" y="360" width="260" height="60" rx="10" fill="#1e3a5f"/>
+  <text x="600" y="385" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">Plataforma común</text>
+  <text x="600" y="405" text-anchor="middle" fill="#bcd4ea" font-size="14">Raspberry Pi Pico 2 W</text>
+
+  <line x1="220" y1="340" x2="560" y2="365" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="4,3"/>
+  <line x1="600" y1="340" x2="600" y2="360" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="4,3"/>
+  <line x1="980" y1="340" x2="640" y2="365" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- ===================== 3. TABLA COMPARATIVA ===================== -->
+  <text x="60" y="480" fill="#1e3a5f" font-size="22" font-weight="bold">2. RP2040 (Pico W) vs RP2350 (Pico 2 W)</text>
+
+  <g font-size="15">
+    <!-- encabezado tabla -->
+    <rect x="60" y="500" width="1080" height="46" fill="#1e3a5f"/>
+    <text x="90"  y="529" fill="#ffffff" font-weight="bold">Característica</text>
+    <text x="450" y="529" fill="#ffffff" font-weight="bold">RP2040 — Pico W</text>
+    <text x="810" y="529" fill="#ffffff" font-weight="bold">RP2350 — Pico 2 W</text>
+
+    <!-- fila 1 -->
+    <rect x="60" y="546" width="1080" height="46" fill="#ffffff" stroke="#d7dde3"/>
+    <text x="90"  y="575" fill="#1e3a5f">CPU</text>
+    <text x="450" y="575" fill="#2e2e2e">2x Cortex-M0+</text>
+    <text x="810" y="575" fill="#2e2e2e">2x Cortex-M33 / Hazard3</text>
+
+    <!-- fila 2 -->
+    <rect x="60" y="592" width="1080" height="46" fill="#eef2f6" stroke="#d7dde3"/>
+    <text x="90"  y="621" fill="#1e3a5f">SRAM</text>
+    <text x="450" y="621" fill="#2e2e2e">264 KB</text>
+    <text x="810" y="621" fill="#2e2e2e">520 KB</text>
+
+    <!-- fila 3 -->
+    <rect x="60" y="638" width="1080" height="46" fill="#ffffff" stroke="#d7dde3"/>
+    <text x="90"  y="667" fill="#1e3a5f">PIO (state machines)</text>
+    <text x="450" y="667" fill="#2e2e2e">8</text>
+    <text x="810" y="667" fill="#2e2e2e">12</text>
+
+    <!-- fila 4 -->
+    <rect x="60" y="684" width="1080" height="46" fill="#eef2f6" stroke="#d7dde3"/>
+    <text x="90"  y="713" fill="#1e3a5f">Board target (Pico SDK)</text>
+    <text x="450" y="713" fill="#2e2e2e">pico_w</text>
+    <text x="810" y="713" fill="#2e2e2e">pico2_w</text>
+  </g>
+
+  <!-- ===================== 4. MICROPYTHON VS C/C++ ===================== -->
+  <text x="60" y="790" fill="#1e3a5f" font-size="22" font-weight="bold">3. MicroPython vs C/C++: dos caminos al mismo LED</text>
+
+  <!-- Flujo MicroPython -->
+  <text x="290" y="825" text-anchor="middle" fill="#2e86ab" font-size="16" font-weight="bold">MicroPython</text>
+
+  <rect x="80"  y="845" width="150" height="55" rx="8" fill="#2e86ab"/>
+  <text x="155" y="878" text-anchor="middle" fill="#ffffff" font-size="13">Código (.py)</text>
+
+  <rect x="270" y="845" width="150" height="55" rx="8" fill="#5aa8cc"/>
+  <text x="345" y="872" text-anchor="middle" fill="#ffffff" font-size="12">Intérprete / VM</text>
+  <text x="345" y="888" text-anchor="middle" fill="#eaf4fa" font-size="11">(en tiempo real)</text>
+
+  <rect x="460" y="845" width="150" height="55" rx="8" fill="#5aa8cc"/>
+  <text x="535" y="878" text-anchor="middle" fill="#ffffff" font-size="12">Módulo machine</text>
+
+  <rect x="650" y="845" width="150" height="55" rx="8" fill="#1e3a5f"/>
+  <text x="725" y="878" text-anchor="middle" fill="#ffffff" font-size="13">Hardware</text>
+
+  <path d="M230,872 L270,872" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M420,872 L460,872" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M610,872 L650,872" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="890" y="878" fill="#4a5560" font-size="13">Prototipado rápido, Thonny</text>
+
+  <!-- Flujo C/CPP -->
+  <text x="290" y="945" text-anchor="middle" fill="#e08e2b" font-size="16" font-weight="bold">C / C++</text>
+
+  <rect x="80"  y="965" width="150" height="55" rx="8" fill="#e08e2b"/>
+  <text x="155" y="998" text-anchor="middle" fill="#ffffff" font-size="13">Código (.c)</text>
+
+  <rect x="270" y="965" width="150" height="55" rx="8" fill="#eaab5c"/>
+  <text x="345" y="992" text-anchor="middle" fill="#ffffff" font-size="12">Compilador</text>
+  <text x="345" y="1008" text-anchor="middle" fill="#fdf1e0" font-size="11">(Pico SDK)</text>
+
+  <rect x="460" y="965" width="150" height="55" rx="8" fill="#eaab5c"/>
+  <text x="535" y="998" text-anchor="middle" fill="#ffffff" font-size="12">Binario (.uf2)</text>
+
+  <rect x="650" y="965" width="150" height="55" rx="8" fill="#1e3a5f"/>
+  <text x="725" y="998" text-anchor="middle" fill="#ffffff" font-size="13">Hardware</text>
+
+  <path d="M230,992 L270,992" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M420,992 L460,992" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M610,992 L650,992" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="890" y="998" fill="#4a5560" font-size="13">Control de bajo nivel, VS Code</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1e3a5f"/>
+    </marker>
+  </defs>
+
+  <!-- ===================== 5. METODOLOGIA ===================== -->
+  <text x="60" y="1090" fill="#1e3a5f" font-size="22" font-weight="bold">4. Metodología de la clase</text>
+
+  <g font-size="14">
+    <rect x="80"  y="1120" width="230" height="90" rx="10" fill="#2e86ab"/>
+    <text x="195" y="1155" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Show</text>
+    <text x="195" y="1178" text-anchor="middle" fill="#eaf4fa" font-size="12">Introducción</text>
+    <text x="195" y="1194" text-anchor="middle" fill="#eaf4fa" font-size="12">teórica</text>
+
+    <rect x="340" y="1120" width="230" height="90" rx="10" fill="#3aa655"/>
+    <text x="455" y="1155" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Do</text>
+    <text x="455" y="1178" text-anchor="middle" fill="#e4f7e9" font-size="12">Implementación</text>
+    <text x="455" y="1194" text-anchor="middle" fill="#e4f7e9" font-size="12">guiada</text>
+
+    <rect x="600" y="1120" width="230" height="90" rx="10" fill="#e08e2b"/>
+    <text x="715" y="1155" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Challenge</text>
+    <text x="715" y="1178" text-anchor="middle" fill="#fdf1e0" font-size="12">Reto</text>
+    <text x="715" y="1194" text-anchor="middle" fill="#fdf1e0" font-size="12">práctico</text>
+
+    <rect x="860" y="1120" width="230" height="90" rx="10" fill="#1e3a5f"/>
+    <text x="975" y="1155" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">Cierre</text>
+    <text x="975" y="1178" text-anchor="middle" fill="#bcd4ea" font-size="12">Evaluación y</text>
+    <text x="975" y="1194" text-anchor="middle" fill="#bcd4ea" font-size="12">evidencia</text>
+  </g>
+
+  <path d="M310,1165 L340,1165" stroke="#4a5560" stroke-width="3" marker-end="url(#arrow2)"/>
+  <path d="M570,1165 L600,1165" stroke="#4a5560" stroke-width="3" marker-end="url(#arrow2)"/>
+  <path d="M830,1165 L860,1165" stroke="#4a5560" stroke-width="3" marker-end="url(#arrow2)"/>
+
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a5560"/>
+    </marker>
+  </defs>
+
+  <!-- Pie -->
+  <rect x="0" y="1540" width="1200" height="60" fill="#1e3a5f"/>
+  <text x="600" y="1575" text-anchor="middle" fill="#bcd4ea" font-size="14">Laboratorio de Elementos Programables I — Universidad Iberoamericana Puebla</text>
+</svg>

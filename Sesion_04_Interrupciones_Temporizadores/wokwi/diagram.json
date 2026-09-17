@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "Axel",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": -40, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_signal",
+      "top": 62.4,
+      "left": -106.15,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_signal",
+      "top": -13.2,
+      "left": -197.8,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_wait",
+      "top": 158.4,
+      "left": -125.35,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_wait",
+      "top": 121.2,
+      "left": -188.2,
+      "attrs": { "color": "magenta" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 199.4,
+      "left": 67.2,
+      "attrs": { "color": "blue" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP15", "r_signal:1", "yellow", [] ],
+    [ "r_signal:2", "led_signal:A", "yellow", [] ],
+    [ "led_signal:C", "pico:GND.8", "black", [] ],
+    [ "pico:GP14", "r_wait:1", "violet", [] ],
+    [ "r_wait:2", "led_wait:A", "violet", [] ],
+    [ "led_wait:C", "pico:GND.8", "black", [ "v57.6", "h-121.2" ] ],
+    [ "pico:GP16", "btn1:1.l", "green", [] ],
+    [ "btn1:2.l", "pico:GND.8", "black", [] ]
+  ],
+  "dependencies": {}
+}
