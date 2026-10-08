@@ -11,4 +11,4 @@ Repo de laboratorio de elementos programables
 | 04 | Interrupciones y Temporizadores (juego de reflejos) | [Sesion_04_Interrupciones_Temporizadores](./Sesion_04_Interrupciones_Temporizadores) |
 | Examen 1 | Primer Examen Parcial: Escape Room de Hardware | [Examen_Parcial_1_EscapeRoom](./Examen_Parcial_1_EscapeRoom) |
 | 06 | PWM + Puente H L298N + Motor DC (controlador con rampas) | [Sesion_06_PWM_Motor_DC](./Sesion_06_PWM_Motor_DC) |
-| 07 | ADC + acondicionamiento de señal (Smart Analog Monitor) | [Sesion_07_ADC_Signal_Conditioning](./Sesion_07_ADC_Signal_Conditioning) |
+| 07 | ADC + acondicionamiento de señal (Smart Analog Monitor + bonus con fotorresistencia en Wokwi) | [Sesion_07_ADC_Signal_Conditioning](./Sesion_07_ADC_Signal_Conditioning) |

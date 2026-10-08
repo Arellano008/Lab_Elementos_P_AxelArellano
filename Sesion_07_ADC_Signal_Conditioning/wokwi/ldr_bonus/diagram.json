@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "author": "Axel Garcia Arellano",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -80,
+      "left": 220,
+      "attrs": {
+        "lux": "500"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledG",
+      "top": 155,
+      "left": 305,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rG",
+      "top": 172,
+      "left": 210,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledY",
+      "top": 215,
+      "left": 305,
+      "attrs": {
+        "color": "yellow"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rY",
+      "top": 232,
+      "left": 210,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledR",
+      "top": 275,
+      "left": 305,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rR",
+      "top": 292,
+      "left": 210,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "pico:3V3",
+      "ldr1:VCC",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "pico:GND.3",
+      "ldr1:GND",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "pico:GP26",
+      "ldr1:AO",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "pico:GP13",
+      "rG:1",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "rG:2",
+      "ledG:A",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ledG:C",
+      "pico:GND.1",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "pico:GP14",
+      "rY:1",
+      "gold",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "rY:2",
+      "ledY:A",
+      "gold",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ledY:C",
+      "pico:GND.1",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "pico:GP15",
+      "rR:1",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "rR:2",
+      "ledR:A",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ledR:C",
+      "pico:GND.1",
+      "black",
+      [
+        "h0"
+      ]
+    ]
+  ],
+  "dependencies": {}
+}

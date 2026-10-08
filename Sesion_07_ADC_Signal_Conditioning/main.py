@@ -1,7 +1,6 @@
 # =========================================================================
 #  DO 03 / CHALLENGE 07 - Smart Analog Monitor
 #  Sesion 07: Conversion ADC y acondicionamiento de senal
-#  Angel Rugerio Jimenez
 #  Axel Garcia Arellano
 #
 #  Cadena de acondicionamiento:

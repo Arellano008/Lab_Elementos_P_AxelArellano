@@ -1,6 +1,6 @@
 # Sesión 07 - Conversión ADC: Smart Analog Monitor
 
-_Trabajo en equipo: Angel Rugerio Jiménez · 201720 — Axel García Arellano · 201251_
+_Trabajo individual: Axel García Arellano · 201251_
 
 ## 1. Objetivo
 
@@ -301,11 +301,15 @@ Se ve el filtro trabajando: el % crudo salta a 100 de golpe, pero el % filtrado 
 | ADC mínimo | raw cercano a 0 / 0 % | | |
 | ADC medio | raw cercano a 32767 / 50 % | | |
 | ADC máximo | raw cercano a 65535 / 100 % | | |
-| Filtro | La señal filtrada cambia suavemente | | |
-| Normal | LED verde activo | | |
-| Warning | LED amarillo activo | | |
-| Alarm | LED rojo activo | | |
-| Recuperación | Vuelve de ALARM a NORMAL al bajar la señal | | |
+| Filtro | La señal filtrada cambia suavemente | **Físico:** al girar la perilla, el % crudo salta 45.7 → 51.6 → 56.4 → 60.5 → 64.4 y el % filtrado sube suave 40.5 → 41.7 → 43.4 → 45.4 → 47.9 | PASS |
+| Normal | LED verde activo | **Wokwi:** raw 14083 · 0.71 V · 21.5 % → NORMAL, LED verde. **Físico:** raw ≈ 25 900 · 1.31 V · ≈ 39.8 % → NORMAL, LED verde | PASS |
+| Warning | LED amarillo activo | **Wokwi:** raw 41242 · 2.08 V · 62.9 % → WARNING, LED amarillo. **Físico:** entra a WARNING en 50.5 % y llega a 72.6 % (2.39 V), LED amarillo | PASS |
+| Alarm | LED rojo activo | **Wokwi:** raw 62639 · 3.15 V · 95.6 % → ALARM, LED rojo. **Físico:** entra a ALARM en 75.5 % (raw 49180 · 2.49 V) y se queda en ≈ 75.7 %, LED rojo | PASS |
+| Recuperación | Vuelve de ALARM a NORMAL al bajar la señal | **Físico:** al bajar la perilla, el serial muestra `[CAMBIO] ALARM -> WARNING` (74.3 %) y `[CAMBIO] WARNING -> NORMAL` (47.5 %); termina en ≈ 39.8 % con el LED verde | PASS |
+
+Los valores de **Wokwi** salen de las capturas de la sección 10 y los del **físico** del serial de VS Code (MicroPico) que se ve en las fotos del montaje con la Pico 2 W. En todas solo está encendido el LED que corresponde, y el voltaje y el porcentaje cumplen la regla de tres (por ejemplo, 41242 × 3.3 / 65535 = 2.08 V). Los valores físicos marcados con ≈ los leí de las fotos de la pantalla.
+
+En la prueba de filtro se ve justo lo que buscaba: el crudo cambió casi 19 puntos en cinco lecturas y el filtrado solo 7, siguiendo la tendencia sin saltos. Por eso el cambio a WARNING ocurre hasta que el **promedio** pasa de 50 %, aunque el crudo ya había cruzado antes (51.6 %).
 
 > En la placa física es normal que el mínimo no sea exactamente 0 ni el máximo exactamente 65535: el ADC real tiene un pequeño offset y ruido. Por eso la tabla dice "cercano a".
 
@@ -323,18 +327,55 @@ Muevo el potenciómetro a cinco posiciones y anoto los valores cuando la señal 
 
 ## 10. Evidencia
 
-| Evidencia | Archivo |
-|---|---|
-| Simulación Wokwi | [`wokwi/enlace_o_captura.md`](./wokwi/enlace_o_captura.md) · [`wokwi/diagram.json`](./wokwi/diagram.json) |
-| Serial con raw, voltaje y porcentaje | [`evidence/serial_raw_voltage.png`](./evidence/serial_raw_voltage.png) |
-| LEDs en NORMAL / WARNING / ALARM | [`evidence/threshold_alarm.png`](./evidence/threshold_alarm.png) |
-| Montaje físico | [`evidence/hardware_photo.jpg`](./evidence/hardware_photo.jpg) |
+### Simulación en Wokwi
 
-![Serial raw / voltaje / porcentaje](./evidence/serial_raw_voltage.png)
+- Proyecto principal (potenciómetro): https://wokwi.com/projects/476816920783892481
+- Bonus con fotorresistencia: https://wokwi.com/projects/477353681322258433
+- Cómo recrear la simulación: [`wokwi/enlace_o_captura.md`](./wokwi/enlace_o_captura.md) · circuito: [`wokwi/diagram.json`](./wokwi/diagram.json)
 
-![Alarma por umbrales](./evidence/threshold_alarm.png)
+### Serial y LEDs en los tres estados
 
-![Montaje físico](./evidence/hardware_photo.jpg)
+Cada captura muestra el serial (raw, voltaje, % crudo, % filtrado y estado) y el LED que se enciende:
+
+| Estado | raw | Voltaje | % filtrado | LED | Captura |
+|---|---|---|---|---|---|
+| NORMAL | 14083 | 0.71 V | 21.5 % | Verde | [`serial_raw_voltage.png`](./evidence/serial_raw_voltage.png) |
+| WARNING | 41242 | 2.08 V | 62.9 % | Amarillo | [`threshold_warning.png`](./evidence/threshold_warning.png) |
+| ALARM | 62639 | 3.15 V | 95.6 % | Rojo | [`threshold_alarm.png`](./evidence/threshold_alarm.png) |
+
+**NORMAL**: potenciómetro abajo, LED verde (se ve también el código en Wokwi):
+
+![NORMAL - LED verde](./evidence/serial_raw_voltage.png)
+
+**WARNING**: potenciómetro a media-alta posición, LED amarillo:
+
+![WARNING - LED amarillo](./evidence/threshold_warning.png)
+
+**ALARM**: potenciómetro casi al máximo, LED rojo:
+
+![ALARM - LED rojo](./evidence/threshold_alarm.png)
+
+### Montaje físico (Pico 2 W)
+
+Probé el mismo `main.py` en mi placa física, una Raspberry Pi Pico 2 W en protoboard, con el potenciómetro en GP26 y los LEDs con 220 Ω en GP13/GP14/GP15. Lo corrí desde VS Code con MicroPico. En cada foto se ven el serial y el LED encendido:
+
+| Foto | LED | Qué muestra el serial |
+|---|---|---|
+| [`hardware_photo.jpg`](./evidence/hardware_photo.jpg) | Verde | Recuperación: `ALARM -> WARNING -> NORMAL` al bajar la perilla |
+| [`hardware_warning.jpg`](./evidence/hardware_warning.jpg) | Amarillo | El filtro suavizando la subida y `NORMAL -> WARNING` |
+| [`hardware_alarm.jpg`](./evidence/hardware_alarm.jpg) | Rojo | `WARNING -> ALARM` y la señal estable en ≈ 75.7 % |
+
+**NORMAL / recuperación**: LED verde:
+
+![Físico NORMAL](./evidence/hardware_photo.jpg)
+
+**WARNING**: LED amarillo:
+
+![Físico WARNING](./evidence/hardware_warning.jpg)
+
+**ALARM**: LED rojo:
+
+![Físico ALARM](./evidence/hardware_alarm.jpg)
 
 ## 11. Exit ticket
 
@@ -372,3 +413,19 @@ GND ─── 10k ───┘              GND ─── 10k ───┘
 - **NTC (termistor)**: más temperatura → menos resistencia → más voltaje → más %. ALARM significaría "temperatura alta". Para mostrar °C habría que agregar la ecuación del termistor (Beta o Steinhart-Hart), pero para la alarma basta con los porcentajes.
 
 Como el divisor se alimenta del 3V3 de la Pico, GP26 sigue sin poder pasar de 3.3 V.
+
+### Simulación del bonus con LDR en Wokwi
+
+No tengo una LDR en físico, así que hice el bonus en Wokwi con el módulo `wokwi-photoresistor-sensor`. Todo está en [`wokwi/ldr_bonus/`](./wokwi/ldr_bonus/) y el proyecto es https://wokwi.com/projects/477353681322258433.
+
+Ese módulo trae la LDR del lado de GND (al revés que el dibujo de arriba), así que **más luz = menos voltaje**. Por eso uso el porcentaje como **"% de oscuridad"**, con los mismos umbrales 50 / 75 (≈ 100 lux y ≈ 21 lux). El programa además calcula la luz en lux a partir del voltaje.
+
+Resultados en Wokwi, moviendo el slider de iluminación:
+
+| Slider de Wokwi | V en GP26 | Lux calculados | % oscuridad | Estado | LED |
+|---|---|---|---|---|---|
+| 2399 lux | 0.32 V | ~2407 lux | 9.7 % | NORMAL | Verde |
+| 46 lux | 2.09 V | ~46 lux | 63.3 % | WARNING | Amarillo |
+| 1 lux | 3.17 V | ~1.1 lux | 96.0 % | ALARM | Rojo |
+
+El cálculo de lux coincidió con el valor del slider, y el mismo algoritmo del potenciómetro funcionó sin cambios en la lógica: solo cambió el sensor y lo que significa el porcentaje. Las capturas están en [`wokwi/ldr_bonus/README.md`](./wokwi/ldr_bonus/README.md).
