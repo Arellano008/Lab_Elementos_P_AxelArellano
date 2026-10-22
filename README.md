@@ -13,3 +13,4 @@ Repo de laboratorio de elementos programables
 | 06 | PWM + Puente H L298N + Motor DC (controlador con rampas) | [Sesion_06_PWM_Motor_DC](./Sesion_06_PWM_Motor_DC) |
 | 07 | ADC + acondicionamiento de señal (Smart Analog Monitor + bonus con fotorresistencia en Wokwi) | [Sesion_07_ADC_Signal_Conditioning](./Sesion_07_ADC_Signal_Conditioning) |
 | 08 | Procesamiento multihilo / dual-core (multitarea cooperativa en Wokwi + `_thread` en Pico física) | [Sesion_08_DualCore_Multitarea](./Sesion_08_DualCore_Multitarea) |
+| 09 | Comunicación UART (UART Command Center con loopback GP0→GP1, tramas ACK / ERR / STATUS) | [Sesion_09_UART](./Sesion_09_UART) |
