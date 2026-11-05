@@ -15,3 +15,4 @@ Repo de laboratorio de elementos programables
 | 08 | Procesamiento multihilo / dual-core (multitarea cooperativa en Wokwi + `_thread` en Pico física) | [Sesion_08_DualCore_Multitarea](./Sesion_08_DualCore_Multitarea) |
 | 09 | Comunicación UART (UART Command Center con loopback GP0→GP1, tramas ACK / ERR / STATUS) | [Sesion_09_UART](./Sesion_09_UART) |
 | Examen 2 | Examen Práctico 02: Sistema de Control Serial Inteligente (UART + PWM + ADC + botón + Dual-Core) | [Examen_Practico_02_UART_PWM_ADC_DualCore](./Examen_Practico_02_UART_PWM_ADC_DualCore) |
+| 10 | Comunicación I2C + OLED HMI (Smart I2C HMI Monitor en Wokwi + bonus MPU6050) | [Sesion_10_I2C_HMI](./Sesion_10_I2C_HMI) |
